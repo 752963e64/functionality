@@ -1,0 +1,18 @@
+# system wide userland
+
+function rules.hint()
+{
+  [[ ! -f ${1} ]] && return 1
+  local IFS=$'\n'
+  local c=0
+  for i in $(cat ${1}); do
+    [[ ${c} -eq 0 ]] && { echo $i; c=1; } || { echo -en "\e[01;30m"; echo -n $i; echo -en "\e[00m"; echo ""; c=0; };
+  done
+}
+
+# root access
+#if [[ $EUID == 0 ]]; then
+#
+#fi
+#
+#
