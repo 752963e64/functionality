@@ -15,3 +15,5 @@ echo "source /etc/functionality" >> /etc/bashrc
 - demonstrate power :)
 
 
+## I been burning in lately :)
+I ran into the deep mind... did coding with wired usb keyboard, no radio, no speaker for months... pretty sick :D but I'm out of it strongher. Here is a subset of the aquired introspection. It's gonna be fun :)
