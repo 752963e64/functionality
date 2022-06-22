@@ -27,6 +27,12 @@ function text.row.hl()
   done
 }
 
+# because in strainer it's free to leak
+[[ -x /bin/ss ]] && {
+  alias ss.ssh='ss -o state established "( dport = :ssh or sport :ssh )"'
+  alias ss.tcp='ss -t -a'
+  alias ss.udp='ss -u -a'
+}
 
 ## environ candles
 
@@ -68,12 +74,6 @@ function env.gcc.set()
 
 # root access
 if [[ $EUID -eq 0 ]]; then
-
-  [[ -x /bin/ss ]] && {
-    alias ss.ssh='ss -o state established "( dport = :ssh or sport :ssh )"'
-    alias ss.tcp='ss -t -a'
-    alias ss.udp='ss -u -a'
-  }
 
   [[ -x /usr/bin/vim ]] && {
     [[ -f /etc/functionality ]] && \
