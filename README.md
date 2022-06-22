@@ -13,6 +13,12 @@ echo "source /etc/functionality" >> /etc/bashrc
 
 ## tasking easier
 - demonstrate power :)
+- The right way to proceed is to think about usage.
+
+How will "normal" ppl in need will be using it...
+- The best features in soft warz distribution, is part of one thing mainly.
+
+It's when you don't need to tweak anything... the default usage fits totally your expectation.
 
 
 ## I been burning in lately :)
