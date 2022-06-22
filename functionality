@@ -1,14 +1,33 @@
 # system wide userland
 
+
+function reload.functionality()
+{
+  [[ -f /etc/functionality ]] && source /etc/functionality
+}
+
+
 function text.row.hl()
 {
   [[ ! -f ${1} ]] && return 1
+  local color="\e[01;30m"
+  [[ ${2} ]] && case ${2} in
+    red) color="\e[01;31m";;
+    green) color="\e[01;32m";;
+    yellow) color="\e[01;33m";;
+    blue) color="\e[01;34m";;
+    purple) color="\e[01;35m";;
+    cyan) color="\e[01;36m";;
+    lgray) color="\e[01;37m";;
+  esac
+  
   local IFS=$'\n'
   local c=0
   for i in $(cat ${1}); do
-    [[ ${c} -eq 0 ]] && { echo $i; c=1; } || { echo -en "\e[01;30m"; echo -n $i; echo -en "\e[00m"; echo ""; c=0; };
+    [[ ${c} -eq 0 ]] && { echo $i; c=1; } || { echo -en $color; echo -n $i; echo -en "\e[00m"; echo ""; c=0; };
   done
 }
+
 
 ## environ candles
 
@@ -41,6 +60,17 @@ function env.gcc.set()
 # root access
 if [[ $EUID -eq 0 ]]; then
 
+  function config.functionality()
+  {
+    [[ -x /usr/bin/vim ]] && vim /etc/functionality
+  }
+
+  [[ -x /bin/ss ]] && {
+    alias ss.ssh='ss -o state established "( dport = :ssh or sport :ssh )"'
+    alias ss.tcp='ss -t -a'
+    alias ss.udp='ss -u -a'
+  }
+
   [[ -x /usr/bin/vim ]] && {
     [[ -f /etc/ssh/sshd_config ]] && \
       alias config.sshd='vim /etc/sshd/sshd_config'
@@ -56,6 +86,4 @@ if [[ $EUID -eq 0 ]]; then
   }
 
 fi
-
-## throw
 

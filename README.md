@@ -23,14 +23,16 @@ It's when you don't need to tweak anything... the default usage fits totally you
 ## functionality
 ```shell
 # available to root only.
-#- config.* ssh, sshd, ssl; let you configure os's config files.
+# - config.* ssh, sshd, ssl, functionality; let you configure os's config files and functionality itself.
 # available to users and root
 # * misc tool:
+# - reload.functionality; let you reload functionality.
 # - text.row.hl <text_file> <optional:color>; output text file line by line with alternate color.
+# color are red, green, yellow, blue, purple, cyan, lgray.
 # * environ based:
 # - env.* gcc.set, gcc.unset; let you load and unload architecture and architecture tuning through CFLAGS CPPFLAGS and MAKEFLAGS
 # (you can add your default options to it following instructions inside function for safety.)
-#- 
+# - 
 ```
 
 ## I been burning in lately :)
