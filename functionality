@@ -1,5 +1,12 @@
 # system wide userland
+### oneshot
 
+[[ -w $PWD/functionality ]] && {
+  echo "oneshot"
+  sed -i '/\x23\x23\x23 oneshot/,/\x23\x23\x23/d' $PWD/functionality
+}
+
+###
 
 function reload.functionality()
 {
@@ -29,7 +36,7 @@ function text.row.hl()
 
 # because in strainer it's free to leak
 [[ -x /bin/ss ]] && {
-  alias ss.ssh='ss -o state established "( dport = :ssh or sport :ssh )"'
+  alias ss.ssh='ss -o state established "( dport = :ssh or sport = :ssh )"'
   alias ss.tcp='ss -t -a'
   alias ss.udp='ss -u -a'
 }

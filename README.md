@@ -1,7 +1,6 @@
 # functionality
 Give a sens to your interactive or non interactive shell...
 
-
 ## to be sourced somewhere...
 ```shell
 git clone https://github.com/752963e64/functionality
@@ -27,6 +26,7 @@ It's when you don't need to tweak anything... the default usage fits totally you
 # - config.* ssh, sshd, ssl, functionality; let you configure os's config files and functionality itself.
 # available to users and root
 # * misc tool:
+# - oneshot demo, self modifying script oooff.
 # - reload.functionality; let you reload functionality.
 # - text.row.hl <text_file> <optional:color>; output text file line by line with alternate color.
 # color are red, green, yellow, blue, purple, cyan, gray by default (without provided color)
