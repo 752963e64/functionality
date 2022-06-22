@@ -20,37 +20,36 @@ It's when you don't need to tweak anything... the default usage fits totally you
 
 
 ## functionality
-```shell
-# available to root only.
 
-# - ss.* tcp, udp, ssh; let you investigate what's going in and out your computer by the network...
+### available to root only
 
-# - config.* ssh, sshd, ssl, functionality; let you configure os's config files and functionality itself.
+```ss.tcp, ss.udp, ss.ssh``` let you investigate what's going in and out your computer by the network...
 
-# available to users and root
-# * misc tool:
+```config.ssh, config.sshd, config.ssl, config.functionality``` let you configure os's config files and functionality itself.
 
-# - oneshot demo, self modifying script oooff.
+### available to users and root
+- misc tools:
 
-# - reload.functionality; let you reload functionality.
+```oneshot demo, self modifying script oooff.```
 
-# - text.row.hl <text_file> <optional:color>; output text file line by line with alternate color.
-# color are red, green, yellow, blue, purple, cyan, gray by default (without provided color)
+```reload.functionality``` let you reload functionality.
 
-# - find.* file, dir, link <path>; lookup some common named resources.
+```text.row.hl <text_file> <optional:color>``` output text file line by line with alternate color.
+colors are red, green, yellow, blue, purple, cyan, gray by default (without provided color)
 
-# - file.inventory <path>; let you make an inventory list from file.
+```find.file, find.dir, find.link <path>``` lookup some common named resources.
 
-# - dir.inventory <path>; let you make an inventory list from directory.
+```file.inventory <path>``` let you make an inventory list from file.
 
-# * environ based:
+```dir.inventory <path>``` let you make an inventory list from directory.
 
-# - env; is replaced by functionality's function which let you enjoy colored output for better sight.
+- environ tools:
 
-# - env.* gcc.set, gcc.unset; let you load and unload architecture and architecture tuning through CFLAGS CPPFLAGS and MAKEFLAGS
-# (you can add your default options to it following instructions inside function for safety.)
-# - 
-```
+```env``` is replaced by functionality's function which let you enjoy colored output for better sight.
+
+```env.gcc.set, gcc.unset``` let you load and unload architecture and architecture tuning through CFLAGS CPPFLAGS and MAKEFLAGS
+(you can add your default options to it following instructions inside function for safety.)
+ 
 
 ## I been burning in lately :)
 I ran into the deep mind... did coding with wired usb keyboard, no radio, no speaker for months...
