@@ -1,8 +1,6 @@
 # functionality
 Give a sens to your interactive or non interactive shell...
 
-![screenshot](https://raw.githubusercontent.com/752963e64/functionality/main/Screenshot_2022-06-21_17-23-19.png)
-
 
 ## to be sourced somewhere...
 ```shell
@@ -30,7 +28,7 @@ It's when you don't need to tweak anything... the default usage fits totally you
 # * misc tool:
 # - text.row.hl <text_file> <optional:color>; output text file line by line with alternate color.
 # * environ based:
-#- env.* gcc.set, gcc.unset; let you load and unload architecture and architecture tuning through CFLAGS CPPFLAGS and MAKEFLAGS
+# - env.* gcc.set, gcc.unset; let you load and unload architecture and architecture tuning through CFLAGS CPPFLAGS and MAKEFLAGS
 # (you can add your default options to it following instructions inside function for safety.)
 #- 
 ```

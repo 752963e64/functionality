@@ -1,6 +1,6 @@
 # system wide userland
 
-function rules.hint()
+function text.row.hl()
 {
   [[ ! -f ${1} ]] && return 1
   local IFS=$'\n'
