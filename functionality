@@ -60,11 +60,6 @@ function env.gcc.set()
 # root access
 if [[ $EUID -eq 0 ]]; then
 
-  function config.functionality()
-  {
-    [[ -x /usr/bin/vim ]] && vim /etc/functionality
-  }
-
   [[ -x /bin/ss ]] && {
     alias ss.ssh='ss -o state established "( dport = :ssh or sport :ssh )"'
     alias ss.tcp='ss -t -a'
@@ -72,6 +67,8 @@ if [[ $EUID -eq 0 ]]; then
   }
 
   [[ -x /usr/bin/vim ]] && {
+    [[ -f /etc/functionality ]] && \
+      alias config.functionality="vim /etc/functionality"
     [[ -f /etc/ssh/sshd_config ]] && \
       alias config.sshd='vim /etc/sshd/sshd_config'
     [[ -f /etc/ssh/ssh_config ]] && \
