@@ -29,6 +29,9 @@ It's when you don't need to tweak anything... the default usage fits totally you
 # - oneshot demo, self modifying script oooff.
 # - reload.functionality; let you reload functionality.
 # - text.row.hl <text_file> <optional:color>; output text file line by line with alternate color.
+# - find.* file, dir, link <path>; lookup some common named resources.
+# - file.inventory <path>; let you make an inventory list from file.
+# - dir.inventory <path>; let you make an inventory list from directory.
 # color are red, green, yellow, blue, purple, cyan, gray by default (without provided color)
 # * environ based:
 # - env; is replaced by functionality's function which let you enjoy colored output for better sight.

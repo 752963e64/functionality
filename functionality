@@ -34,6 +34,51 @@ function text.row.hl()
   done
 }
 
+# ----------------------------------------------------
+## find
+# ----------------------------------------------------
+
+function find.file()
+{
+  [[ -d ${1} && ${2} ]] || { echo "usage: find.file <path> <name>"; return 1; }
+  find ${1} -type f -name ${2}
+}
+
+
+function find.dir()
+{
+  [[ -d ${1} && ${2} ]] || { echo "usage: find.dir <path> <name>"; return 1; }
+  find ${1} -type d -name ${2}
+}
+
+
+function find.link()
+{
+  [[ -d ${1} && ${2} ]] || { echo "usage: find.link <path> <name>"; return 1; }
+  find ${1} -type l -name ${2}
+}
+
+
+function file.inventory()
+{
+  [[ -d ${1} ]] || { echo "usage: find.inventory <path>"; return 1; }
+  local fname="$USER.inventory-$(date "+%d-%m-%Y-%H%M%S").list"
+  echo "# PATH=$PWD/${1}" > ~/${fname}
+  find ${1} -type f -o -type l >> ~/${fname}
+  case $- in *i*) ls -alsh ~/${fname};; esac
+}
+
+
+function dir.inventory()
+{
+  [[ -d ${1} ]] || { echo "usage: find.inventory <path>"; return 1; }
+  local fname="$USER.inventory-$(date "+%d-%m-%Y-%H%M%S").list"
+  echo "# PATH=$PWD/${1}" > ~/${fname}
+  find ${1} -type d -o -type l >> ~/${fname}
+  case $- in *i*) ls -alsh ~/${fname};; esac
+}
+
+
 # because in strainer it's free to leak
 [[ -x /bin/ss ]] && {
   alias ss.ssh='ss -o state established "( dport = :ssh or sport = :ssh )"'
@@ -41,15 +86,20 @@ function text.row.hl()
   alias ss.udp='ss -u -a'
 }
 
+
 ## environ candles
 
 
 function env()
 {
-  local IFS=$'\n'
-  for i in $(/usr/bin/env $@); do
-    echo -n "${i%%=*}=" && echo -en "\e[01;30m" && echo -n "${i#*=}" && echo -e "\e[00m";
-  done
+  function proceed()
+  {
+    local IFS=$'\n'
+    for i in $(/usr/bin/env $@); do
+      echo -n "${i%%=*}=" && echo -en "\e[01;30m" && echo -n "${i#*=}" && echo -e "\e[00m";
+    done
+  }
+  case $- in *i*) proceed $@;; *) /usr/bin/env $@;;esac
 }
 
 
