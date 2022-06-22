@@ -41,14 +41,14 @@ function env.gcc.set()
 # root access
 if [[ $EUID -eq 0 ]]; then
 
-  [[ -x /usr/bin/vim ]] && [[ -f /etc/sshd/sshd_config ]] && \
-    alias config.sshd='vim /etc/sshd/sshd_config'
-
-  [[ -x /usr/bin/vim ]] && [[ -f /etc/sshd/ssh_config ]] && \
-    alias config.ssh='vim /etc/sshd/ssh_config'
-
-  [[ -x /usr/bin/vim ]] && [[ -f /etc/ssl/openssl.cnf ]] && \
-    alias config.ssl='vim /etc/ssl/openssl.cnf'
+  [[ -x /usr/bin/vim ]] && {
+    [[ -f /etc/ssh/sshd_config ]] && \
+      alias config.sshd='vim /etc/sshd/sshd_config'
+    [[ -f /etc/ssh/ssh_config ]] && \
+      alias config.ssh='vim /etc/sshd/ssh_config'
+    [[ -f /etc/ssl/openssl.cnf ]] && \
+      alias config.ssl='vim /etc/ssl/openssl.cnf'
+  }
 
   function hello.world()
   {
