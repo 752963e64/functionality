@@ -18,7 +18,6 @@ function text.row.hl()
     blue) color="\e[01;34m";;
     purple) color="\e[01;35m";;
     cyan) color="\e[01;36m";;
-    lgray) color="\e[01;37m";;
   esac
   
   local IFS=$'\n'
@@ -30,6 +29,16 @@ function text.row.hl()
 
 
 ## environ candles
+
+
+function env()
+{
+  local IFS=$'\n'
+  for i in $(/usr/bin/env $@); do
+    echo -n "${i%%=*}=" && echo -en "\e[01;30m" && echo -n "${i#*=}" && echo -e "\e[00m";
+  done
+}
+
 
 function env.gcc.unset()
 {
