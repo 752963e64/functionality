@@ -13,6 +13,9 @@ function reload.functionality()
   [[ -f /etc/functionality ]] && source /etc/functionality
 }
 
+# -----------------------------------------------------
+## text
+# -----------------------------------------------------
 
 function text.row.hl()
 {
@@ -34,9 +37,9 @@ function text.row.hl()
   done
 }
 
-# ----------------------------------------------------
-## find
-# ----------------------------------------------------
+# -----------------------------------------------------
+## file
+# -----------------------------------------------------
 
 function find.file()
 {
@@ -79,6 +82,36 @@ function dir.inventory()
 }
 
 
+function file.backup()
+{
+  [[ -d ${1} ]] || { echo "usage: backup.xz <path>"; return 1; }
+  local fname=$(date "+%d-%m-%Y-%H%M%S").tar.xz
+  case $- in *i*) echo "Archiving ${1}";; esac
+  cd ${1} && tar cpJf /tmp/${fname} .
+}
+
+
+function file.integrity()
+{
+  local tmpfile="/tmp/lst.md5sum"
+  [[ -d ${1} ]] && {
+    find ${1} -type f -exec md5sum {} \; > ${tmpfile}
+    [[ $? -eq 0 ]] && { mv ${tmpfile} ${1}/.lst.md5sum; } ||
+    echo "something went wrong while writing ${tmpfile}";
+    return 0;
+  }
+  [[ ${1} = 'check' ]] && {
+    [[ -d ${2} ]] && { md5sum -w --quiet -c ${2}/.lst.md5sum; }
+    return 0
+  }
+  case $- in *i*) echo -e "usage:\n\tfile.integrity <path>\n\tfile.integrity check <path>";; esac
+}
+
+
+# ---------------------------------------------------
+## network
+# ---------------------------------------------------
+
 # because in strainer it's free to leak
 [[ -x /bin/ss ]] && {
   alias ss.ssh='ss -o state established "( dport = :ssh or sport = :ssh )"'
@@ -86,10 +119,9 @@ function dir.inventory()
   alias ss.udp='ss -u -a'
 }
 
-
+# ---------------------------------------------------
 ## environ candles
-
-
+# ---------------------------------------------------
 function env()
 {
   function proceed()

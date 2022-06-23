@@ -37,11 +37,15 @@ It's when you don't need to tweak anything... the default usage fits totally you
 ```text.row.hl <text_file> <optional:color>``` output text file line by line with alternate color.
 colors are red, green, yellow, blue, purple, cyan, gray by default (without provided color)
 
-```find.file, find.dir, find.link <path>``` lookup some common named resources.
+```find.file, find.dir, find.link <path> <name>``` lookup some common named resources.
 
 ```file.inventory <path>``` let you make an inventory list from file.
 
 ```dir.inventory <path>``` let you make an inventory list from directory.
+
+```file.integrity``` brings integrity in your data.
+
+```backup.xz``` let you backup your data easily.
 
 - environ tools:
 
@@ -55,3 +59,4 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 I ran into the deep mind... did coding with wired usb keyboard, no radio, no speaker for months...
 pretty sick :D but I'm out of it strongher. Here is a subset of the aquired introspection.
 It's gonna be fun :)
+q
