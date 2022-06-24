@@ -47,6 +47,7 @@ function text.row.hl()
 # -----------------------------------------------------
 
 [[ -x /usr/bin/find ]] && {
+
   function find.file()
   {
     [[ -d ${1} && ${2} ]] || { echo "usage: find.file <path> <name>"; return 1; }
@@ -110,37 +111,37 @@ function text.row.hl()
     return 0
   }
   
-  function integrity.md5()
+  [[ -x /usr/bin/md5sum ]] && function integrity.md5()
   {
     local hashto=${FUNCNAME##*.}
     integrity $hashto ${1}
   }
   
-  function integrity.sha1()
+  [[ -x /usr/bin/sha1sum ]] && function integrity.sha1()
   {
     local hashto=${FUNCNAME##*.}
     integrity $hashto ${1}
   }
   
-  function integrity.sha224()
+  [[ -x /usr/bin/sha224sum ]] && function integrity.sha224()
   {
     local hashto=${FUNCNAME##*.}
     integrity $hashto ${1}
   }
   
-  function integrity.sha256()
+  [[ -x /usr/bin/sha256sum ]] && function integrity.sha256()
   {
     local hashto=${FUNCNAME##*.}
     integrity $hashto ${1}
   }
   
-  function integrity.sha384()
+  [[ -x /usr/bin/sha384sum ]] && function integrity.sha384()
   {
     local hashto=${FUNCNAME##*.}
     integrity $hashto ${1}
   }
   
-  function integrity.sha512()
+  [[ -x /usr/bin/sha512sum ]] && function integrity.sha512()
   {
     local hashto=${FUNCNAME##*.}
     integrity $hashto ${1}
