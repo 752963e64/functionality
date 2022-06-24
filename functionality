@@ -81,22 +81,63 @@ function dir.inventory()
   case $- in *i*) ls -alsh ~/${fname};; esac
 }
 
+# --------------------------------------------------
+## backup related
+# - TODO update archives.
+# --------------------------------------------------
+
+function backup()
+{
+  [[ -d ${2} ]] || { echo "usage: use backup.<xz|gz|bz2> <path>; instead."; return 1; }
+  local fname=$(date "+%d-%m-%Y-%H%M%S").tar.${1}
+  local opts='-c'
+  [[ -f /tmp/func.backup.v ]] && opts+='v'
+  opts+='p'
+  case $- in *i*) echo "Archiving ${2} to /tmp/${fname}";; esac
+  case ${1} in
+    bz2) opts+='j';;
+    gz) opts+='z';;
+    xz) opts+='J';;
+  esac
+  opts+='f'
+  cd ${2} && tar ${opts} /tmp/${fname} .
+}
+
+function backup.v()
+{
+  [[ -f /tmp/func.backup.v ]] && {
+    rm -f /tmp/func.backup.v
+    return
+  }
+  echo -n "" > /tmp/func.backup.v
+}
+
+function backup.bz2()
+{
+  local tarto=${FUNCNAME##*.}
+  backup $tarto ${1}
+}
+
+function backup.gz()
+{
+  local tarto=${FUNCNAME##*.}
+  backup $tarto ${1}
+}
 
 function backup.xz()
 {
-  [[ -d ${1} ]] || { echo "usage: backup.xz <path>"; return 1; }
-  local fname=$(date "+%d-%m-%Y-%H%M%S").tar.xz
-  case $- in *i*) echo "Archiving ${1}";; esac
-  cd ${1} && tar cpJf /tmp/${fname} .
+  local tarto=${FUNCNAME##*.}
+  backup $tarto ${1}
 }
 
 # --------------------------------------------------
 ## file integrity related
 # --------------------------------------------------
 
+
 function integrity()
 {
-  [[ ${1} && -d ${2} ]] || { case $- in *i*) echo "usage: use integrity.<algo> <path>; instead.";; esac; return 1; }
+  [[ ${1} && -d ${2} ]] || { echo "usage: use integrity.<algo> <path>; instead."; return 1; }
   local tmpfile="/tmp/lst.${1}sum"
   find ${2} -type f -exec ${1}sum {} \; > ${tmpfile}
   [[ $? -eq 0 ]] && { mv ${tmpfile} ${2}/.lst.${1}sum; } ||

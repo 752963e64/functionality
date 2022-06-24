@@ -71,6 +71,12 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```integrity.sha512``` brings integrity in your data.
 
+```backup``` The interface.
+
+```backup.bz2``` let you backup your data easily.
+
+```backup.gz``` let you backup your data easily.
+
 ```backup.xz``` let you backup your data easily.
 
 - environ tools:
