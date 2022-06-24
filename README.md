@@ -98,7 +98,9 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 #### network related
 
 ```ss.tcp``` let you investigate what's going in and out your computer by the network tcp protocol.
+
 ```ss.udp``` let you investigate what's going in and out your computer by the network udp protocol.
+
 ```ss.ssh``` let you investigate what's going in and out your computer by the network by ssh protocol(assuming default port).
 
 - You can add your own option added to cmd, because it uses aliases.
