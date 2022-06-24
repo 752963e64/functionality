@@ -2,10 +2,10 @@
 ### oneshot
 # This part is gonna vanish from script... if you load it
 #from inside git repo issue ". functionality"
-#[[ -w $PWD/functionality ]] && {
-#  echo "oneshot"
-#  sed -i '/\x23\x23\x23 oneshot/,/\x23\x23\x23/d' $PWD/functionality
-#}
+[[ -w $PWD/functionality ]] && {
+  echo "oneshot"
+  sed -i '/\x23\x23\x23 oneshot/,/\x23\x23\x23/d' $PWD/functionality
+}
 # it's magic, it has a name it's pretty looked ability however I've no job, oohhhh...
 ###
 
@@ -69,25 +69,45 @@ function text.row.hl()
   }
 
 
-  function file.inventory()
+  function inventory()
   {
-    [[ -d ${1} ]] || { echo "usage: find.inventory <path>"; return 1; }
-    local fname="$USER.inventory-$(date "+%d-%m-%Y-%H%M%S").list"
+    [[ ${1} -d ${2} ]] || { echo "usage: use inventory.<file|dir|link|all> <path>; instead."; return 1; }
+    local opts
+    case ${1} in
+      dir) opts+='-type d -o -type l';;
+      file) opts+='-type f -o -type l';;
+      link) opts+='-type l';;
+      all) opts+='-type f -o -type d -o -type l';;
+    esac
+    local fname="$USER.${1}.inventory-$(date "+%d-%m-%Y-%H%M%S").list"
     echo "# PATH=$PWD/${1}" > ~/${fname}
-    find ${1} -type f -o -type l >> ~/${fname}
+    find ${1} ${opts} >> ~/${fname}
     case $- in *i*) ls -alsh ~/${fname};; esac
   }
 
-
-  function dir.inventory()
+  function inventory.dir()
   {
-    [[ -d ${1} ]] || { echo "usage: find.inventory <path>"; return 1; }
-    local fname="$USER.inventory-$(date "+%d-%m-%Y-%H%M%S").list"
-    echo "# PATH=$PWD/${1}" > ~/${fname}
-    find ${1} -type d -o -type l >> ~/${fname}
-    case $- in *i*) ls -alsh ~/${fname};; esac
+    local listof=${FUNCNAME##*.}
+    integrity $listof ${1}
   }
 
+  function inventory.file()
+  {
+    local listof=${FUNCNAME##*.}
+    integrity $listof ${1}
+  }
+
+  function inventory.link()
+  {
+    local listof=${FUNCNAME##*.}
+    integrity $listof ${1}
+  }
+
+  function inventory.all()
+  {
+    local listof=${FUNCNAME##*.}
+    integrity $listof ${1}
+  }
 
   # --------------------------------------------------
   ## file integrity related
@@ -175,8 +195,10 @@ function text.row.hl()
   
   function backup.v()
   {
+    local opts="-f"
     [[ -f /tmp/func.backup.v ]] && {
-      rm -f /tmp/func.backup.v
+      case $- in *i*) opts+='v';; esac
+      rm ${opts} /tmp/func.backup.v
       return
     }
     echo -n "" > /tmp/func.backup.v

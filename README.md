@@ -58,6 +58,7 @@ I may end sclicing functionality to part source/unset ofloading style zZZzzzZZ;
 ```text.row.hl <text_file> <optional:color>``` output text file line by line with alternate color.
 colors are red, green, yellow, blue, purple, cyan, gray by default (without provided color)
 
+
 #### directory, file, link lookup related
 
 ```find.file <path> <name>``` lookup some common named resources.
@@ -66,11 +67,19 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```find.link <path> <name>``` lookup some common named resources.
 
+
 #### inventory related
 
-```file.inventory <path>``` let you make an inventory list from file.
+```inventory``` The interface.
 
-```dir.inventory <path>``` let you make an inventory list from directory.
+```inventory.file <path>``` lookup all files from given path.
+
+```inventory.dir <path>``` lookup all dirs from given path.
+
+```inventory.link <path>``` lookup all link from given path.
+
+```inventory.all <path>``` lookup all resources from given path.
+
 
 #### file integrity related
 
@@ -90,6 +99,7 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```integrity.sha512 <path>``` brings integrity in your data.
 
+
 #### backup related
 
 ```backup``` The interface.
@@ -101,6 +111,7 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 ```backup.gz <path>``` let you backup your data easily.
 
 ```backup.xz <path>``` let you backup your data easily.
+
 
 #### network related
 
