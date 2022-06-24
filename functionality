@@ -1,21 +1,25 @@
 # system wide userland
 ### oneshot
-
+# This part is gonna vanish from script... if you load it
+#from inside git repo issue ". functionality"
 #[[ -w $PWD/functionality ]] && {
 #  echo "oneshot"
 #  sed -i '/\x23\x23\x23 oneshot/,/\x23\x23\x23/d' $PWD/functionality
 #}
-
+# it's magic, it has a name it's pretty looked ability however I've no job, oohhhh...
 ###
+
 
 function reload.functionality()
 {
   [[ -f /etc/functionality ]] && source /etc/functionality
 }
 
+
 # -----------------------------------------------------
 ## text
 # -----------------------------------------------------
+
 
 function text.row.hl()
 {
@@ -37,9 +41,11 @@ function text.row.hl()
   done
 }
 
+
 # -----------------------------------------------------
 ## file
 # -----------------------------------------------------
+
 
 function find.file()
 {
@@ -81,10 +87,14 @@ function dir.inventory()
   case $- in *i*) ls -alsh ~/${fname};; esac
 }
 
+
 # --------------------------------------------------
 ## backup related
 # - TODO update archives.
+# - TODO follow fs type limits.
+# - TODO check/deduce size before compressing.
 # --------------------------------------------------
+
 
 function backup()
 {
@@ -130,13 +140,16 @@ function backup.xz()
   backup $tarto ${1}
 }
 
+
 # --------------------------------------------------
 ## file integrity related
+# - one way hashing
 # --------------------------------------------------
+
 
 function integrity()
 {
-  [[ ${1} && -d ${2} ]] || { echo "usage: use integrity.<algo> <path>; instead."; return 1; }
+  [[ ${1} && -d ${2} ]] || { echo "usage: use integrity.<md5|sha1|sha224|sha256|sha384|sha512> <path>; instead."; return 1; }
   local tmpfile="/tmp/lst.${1}sum"
   find ${2} -type f -exec ${1}sum {} \; > ${tmpfile}
   [[ $? -eq 0 ]] && { mv ${tmpfile} ${2}/.lst.${1}sum; } ||
@@ -146,7 +159,7 @@ function integrity()
 
 function integrity.check()
 {
-  [[ -d ${2} ]] || { echo "usage: integrity.check <algo> <path>."; return 1; }
+  [[ -d ${2} ]] || { echo "usage: integrity.check <md5|sha1|sha224|sha256|sha384|sha512> <path>."; return 1; }
   cd ${2} && ${1}sum -w --quiet -c .lst.${1}sum; }
   return 0
 }
