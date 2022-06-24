@@ -106,9 +106,9 @@ function text.row.hl()
 
   function integrity.check()
   {
-    [[ -d ${2} ]] || { echo "usage: integrity.check <md5|sha1|sha224|sha256|sha384|sha512> <path>."; return 1; }
+    [[ ${1} && -d ${2} ]] || { echo "usage: integrity.check <md5|sha1|sha224|sha256|sha384|sha512> <path>."; return 1; }
     cd ${2} && ${1}sum -w --quiet -c .lst.${1}sum; }
-    return 0
+    return $?
   }
   
   [[ -x /usr/bin/md5sum ]] && function integrity.md5()
