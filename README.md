@@ -57,6 +57,8 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```dir.inventory <path>``` let you make an inventory list from directory.
 
+```integrity``` the interface.
+
 ```integrity.md5``` brings integrity in your data.
 
 ```integrity.sha1``` brings integrity in your data.
@@ -64,6 +66,8 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 ```integrity.sha224``` brings integrity in your data.
 
 ```integrity.sha256``` brings integrity in your data.
+
+```integrity.sha384``` brings integrity in your data.
 
 ```integrity.sha512``` brings integrity in your data.
 
