@@ -36,13 +36,14 @@ I may end sclicing functionality to part source/unset ofloading style zZZzzzZZ;
 
 ### available to root only
 
-```ss.tcp, ss.udp, ss.ssh``` let you investigate what's going in and out your computer by the network...
+#### system's config files related
 
 ```config.ssh, config.sshd, config.ssl, config.functionality``` let you configure os's config files and functionality itself.
 
 
 ### available to users and root
-- misc tools:
+
+#### misc tools:
 
 ```oneshot demo, self modifying script oooff.```
 
@@ -51,11 +52,17 @@ I may end sclicing functionality to part source/unset ofloading style zZZzzzZZ;
 ```text.row.hl <text_file> <optional:color>``` output text file line by line with alternate color.
 colors are red, green, yellow, blue, purple, cyan, gray by default (without provided color)
 
+#### directory, file, link lookup related
+
 ```find.file, find.dir, find.link <path> <name>``` lookup some common named resources.
+
+#### inventory related
 
 ```file.inventory <path>``` let you make an inventory list from file.
 
 ```dir.inventory <path>``` let you make an inventory list from directory.
+
+#### file integrity related
 
 ```integrity``` the interface.
 
@@ -71,6 +78,8 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```integrity.sha512``` brings integrity in your data.
 
+#### backup related
+
 ```backup``` The interface.
 
 ```backup.v``` let you instruct interface you wishes verbosity.
@@ -81,13 +90,17 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```backup.xz``` let you backup your data easily.
 
-- environ tools:
+#### network related
+
+```ss.tcp, ss.udp, ss.ssh``` let you investigate what's going in and out your computer by the network...
+
+#### environ tools:
 
 ```env``` is replaced by functionality's function which let you enjoy colored output for better sight.
 
 ```env.gcc.set, gcc.unset``` let you load and unload architecture and architecture tuning through CFLAGS CPPFLAGS and MAKEFLAGS
 (you can add your default options to it following instructions inside function for safety.)
- 
+
 
 ## I been burning in lately :)
 I ran into the deep mind... did coding with wired usb keyboard, no radio, no speaker for months...
