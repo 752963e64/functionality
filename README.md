@@ -38,7 +38,10 @@ I may end sclicing functionality to part source/unset ofloading style zZZzzzZZ;
 
 #### system's config files related
 
-```config.ssh, config.sshd, config.ssl, config.functionality``` let you configure os's config files and functionality itself.
+```config.ssh``` let you configure openssh client config file.
+```config.sshd``` let you configure openssh server config file.
+```config.ssl``` let you configure openssl config files.
+```config.functionality``` let you configure functionality itself.
 
 
 ### available to users and root
@@ -54,7 +57,9 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 #### directory, file, link lookup related
 
-```find.file, find.dir, find.link <path> <name>``` lookup some common named resources.
+```find.file <path> <name>``` lookup some common named resources.
+```find.dir <path> <name>``` lookup some common named resources.
+```find.link <path> <name>``` lookup some common named resources.
 
 #### inventory related
 
@@ -66,17 +71,17 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```integrity``` the interface.
 
-```integrity.md5``` brings integrity in your data.
+```integrity.md5 <path>``` brings integrity in your data.
 
-```integrity.sha1``` brings integrity in your data.
+```integrity.sha1 <path>``` brings integrity in your data.
 
-```integrity.sha224``` brings integrity in your data.
+```integrity.sha224 <path>``` brings integrity in your data.
 
-```integrity.sha256``` brings integrity in your data.
+```integrity.sha256 <path>``` brings integrity in your data.
 
-```integrity.sha384``` brings integrity in your data.
+```integrity.sha384 <path>``` brings integrity in your data.
 
-```integrity.sha512``` brings integrity in your data.
+```integrity.sha512 <path>``` brings integrity in your data.
 
 #### backup related
 
@@ -84,22 +89,29 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```backup.v``` let you instruct interface you wishes verbosity.
 
-```backup.bz2``` let you backup your data easily.
+```backup.bz2 <path>``` let you backup your data easily.
 
-```backup.gz``` let you backup your data easily.
+```backup.gz <path>``` let you backup your data easily.
 
-```backup.xz``` let you backup your data easily.
+```backup.xz <path>``` let you backup your data easily.
 
 #### network related
 
-```ss.tcp, ss.udp, ss.ssh``` let you investigate what's going in and out your computer by the network...
+```ss.tcp``` let you investigate what's going in and out your computer by the network tcp protocol.
+```ss.udp``` let you investigate what's going in and out your computer by the network udp protocol.
+```ss.ssh``` let you investigate what's going in and out your computer by the network by ssh protocol(assuming default port).
+
+- You can add your own option added to cmd, because it uses aliases.
 
 #### environ tools:
 
 ```env``` is replaced by functionality's function which let you enjoy colored output for better sight.
 
-```env.gcc.set, gcc.unset``` let you load and unload architecture and architecture tuning through CFLAGS CPPFLAGS and MAKEFLAGS
+```env.gcc.set``` let you load given architecture and architecture tuning through CFLAGS CPPFLAGS and MAKEFLAGS 
 (you can add your default options to it following instructions inside function for safety.)
+
+```gcc.unset``` let you unload previous CFLAGS CPPFLAGS MAKEFLAGS
+
 
 
 ## I been burning in lately :)
