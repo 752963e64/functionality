@@ -39,8 +39,11 @@ I may end sclicing functionality to part source/unset ofloading style zZZzzzZZ;
 #### system's config files related
 
 ```config.ssh``` let you configure openssh client config file.
+
 ```config.sshd``` let you configure openssh server config file.
+
 ```config.ssl``` let you configure openssl config files.
+
 ```config.functionality``` let you configure functionality itself.
 
 
@@ -58,7 +61,9 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 #### directory, file, link lookup related
 
 ```find.file <path> <name>``` lookup some common named resources.
+
 ```find.dir <path> <name>``` lookup some common named resources.
+
 ```find.link <path> <name>``` lookup some common named resources.
 
 #### inventory related
