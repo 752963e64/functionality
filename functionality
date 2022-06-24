@@ -1,10 +1,10 @@
 # system wide userland
 ### oneshot
 
-[[ -w $PWD/functionality ]] && {
-  echo "oneshot"
-  sed -i '/\x23\x23\x23 oneshot/,/\x23\x23\x23/d' $PWD/functionality
-}
+#[[ -w $PWD/functionality ]] && {
+#  echo "oneshot"
+#  sed -i '/\x23\x23\x23 oneshot/,/\x23\x23\x23/d' $PWD/functionality
+#}
 
 ###
 
@@ -82,7 +82,7 @@ function dir.inventory()
 }
 
 
-function file.backup()
+function backup.xz()
 {
   [[ -d ${1} ]] || { echo "usage: backup.xz <path>"; return 1; }
   local fname=$(date "+%d-%m-%Y-%H%M%S").tar.xz
@@ -90,21 +90,58 @@ function file.backup()
   cd ${1} && tar cpJf /tmp/${fname} .
 }
 
-
-function file.integrity()
+function integrity.check()
 {
-  local tmpfile="/tmp/lst.md5sum"
-  [[ -d ${1} ]] && {
-    find ${1} -type f -exec md5sum {} \; > ${tmpfile}
-    [[ $? -eq 0 ]] && { mv ${tmpfile} ${1}/.lst.md5sum; } ||
-    echo "something went wrong while writing ${tmpfile}";
-    return 0;
-  }
-  [[ ${1} = 'check' ]] && {
-    [[ -d ${2} ]] && { md5sum -w --quiet -c ${2}/.lst.md5sum; }
+  [[ -d ${2} ]] && { cd ${2} && ${1}sum -w --quiet -c .lst.${1}sum; }
+  return 0
+}
+
+function integrity()
+{
+  [[ ${1} && ${2} ]] || { echo "usage: use integrity.<algo> <path>; instead."; }
+  local tmpfile="/tmp/lst.${1}sum"
+  [[ -d ${2} ]] && {
+    find ${2} -type f -exec ${1}sum {} \; > ${tmpfile}
+    [[ $? -eq 0 ]] && { mv ${tmpfile} ${2}/.lst.${1}sum; } ||
+    echo "something went wrong while writing ${tmpfile}"
     return 0
   }
-  case $- in *i*) echo -e "usage:\n\tfile.integrity <path>\n\tfile.integrity check <path>";; esac
+}
+
+function integrity.md5()
+{
+  local hashto=${FUNCNAME##*.}
+  integrity $hashto ${1}
+}
+
+function integrity.sha1()
+{
+  local hashto=${FUNCNAME##*.}
+  integrity $hashto ${1}
+}
+
+function integrity.sha224()
+{
+  local hashto=${FUNCNAME##*.}
+  integrity $hashto ${1}
+}
+
+function integrity.sha256()
+{
+  local hashto=${FUNCNAME##*.}
+  integrity $hashto ${1}
+}
+
+function integrity.sha384()
+{
+  local hashto=${FUNCNAME##*.}
+  integrity $hashto ${1}
+}
+
+function integrity.sha512()
+{
+  local hashto=${FUNCNAME##*.}
+  integrity $hashto ${1}
 }
 
 
@@ -131,7 +168,7 @@ function env()
       echo -n "${i%%=*}=" && echo -en "\e[01;30m" && echo -n "${i#*=}" && echo -e "\e[00m";
     done
   }
-  case $- in *i*) proceed $@;; *) /usr/bin/env $@;;esac
+  case $- in *i*) proceed $@;; *) /usr/bin/env $@;; esac
 }
 
 
