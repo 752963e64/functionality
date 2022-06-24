@@ -73,6 +73,8 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```backup``` The interface.
 
+```backup.v``` let you instruct interface you wishes verbosity.
+
 ```backup.bz2``` let you backup your data easily.
 
 ```backup.gz``` let you backup your data easily.
@@ -91,4 +93,3 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 I ran into the deep mind... did coding with wired usb keyboard, no radio, no speaker for months...
 pretty sick :D but I'm out of it strongher. Here is a subset of the aquired introspection.
 It's gonna be fun :)
-q
