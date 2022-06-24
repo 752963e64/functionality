@@ -39,8 +39,11 @@ I may end sclicing functionality to part source/unset ofloading style zZZzzzZZ;
 #### system's config files related
 
 ```config.ssh``` let you configure openssh client config file.
+
 ```config.sshd``` let you configure openssh server config file.
+
 ```config.ssl``` let you configure openssl config files.
+
 ```config.functionality``` let you configure functionality itself.
 
 
@@ -58,7 +61,9 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 #### directory, file, link lookup related
 
 ```find.file <path> <name>``` lookup some common named resources.
+
 ```find.dir <path> <name>``` lookup some common named resources.
+
 ```find.link <path> <name>``` lookup some common named resources.
 
 #### inventory related
@@ -100,7 +105,9 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 #### network related
 
 ```ss.tcp``` let you investigate what's going in and out your computer by the network tcp protocol.
+
 ```ss.udp``` let you investigate what's going in and out your computer by the network udp protocol.
+
 ```ss.ssh``` let you investigate what's going in and out your computer by the network by ssh protocol(assuming default port).
 
 - You can add your own option added to cmd, because it uses aliases.
