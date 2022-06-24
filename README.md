@@ -71,6 +71,8 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```integrity``` the interface.
 
+```integrity.check <md5|sha1|sha224|sha256|sha384|sha512> <path>``` checks integrity in your data.
+
 ```integrity.md5 <path>``` brings integrity in your data.
 
 ```integrity.sha1 <path>``` brings integrity in your data.
