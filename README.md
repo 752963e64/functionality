@@ -58,6 +58,7 @@ I may end sclicing functionality to part source/unset ofloading style zZZzzzZZ;
 ```text.row.hl <text_file> <optional:color>``` output text file line by line with alternate color.
 colors are red, green, yellow, blue, purple, cyan, gray by default (without provided color)
 
+```todo <title> <message>``` let you store your todo's inside your user directory.
 
 #### directory, file, link lookup related
 
@@ -87,17 +88,17 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```integrity.check <md5|sha1|sha224|sha256|sha384|sha512> <path>``` checks integrity in your data.
 
-```integrity.md5 <path>``` brings integrity in your data.
+```integrity.md5 <path>``` brings integrity with md5 in your data.
 
-```integrity.sha1 <path>``` brings integrity in your data.
+```integrity.sha1 <path>``` brings integrity with sha1 in your data.
 
-```integrity.sha224 <path>``` brings integrity in your data.
+```integrity.sha224 <path>``` brings integrity with sha224 in your data.
 
-```integrity.sha256 <path>``` brings integrity in your data.
+```integrity.sha256 <path>``` brings integrity with sha256 in your data.
 
-```integrity.sha384 <path>``` brings integrity in your data.
+```integrity.sha384 <path>``` brings integrity with sha384 in your data.
 
-```integrity.sha512 <path>``` brings integrity in your data.
+```integrity.sha512 <path>``` brings integrity with sha512 in your data.
 
 
 #### backup related
@@ -122,6 +123,10 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 ```ss.ssh``` let you investigate what's going in and out your computer by the network ssh protocol(assuming default port).
 
 - You can add your own option added to cmd, because it uses aliases.
+
+```ssl.prime <number|hex>``` let you look for prime numbers.
+
+```ssl.connect <ip|domainname>``` let you test secure socket layer connection.
 
 #### environ tools:
 
