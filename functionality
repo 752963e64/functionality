@@ -21,11 +21,13 @@ function aliases.redbean()
   alias redbean.BJS.vvvVVV='env -i ~/bin/redbean.zip -BJSvvvVVV -t 3000 -%'
   alias redbean.BJSS.vvvVVV='env -i ~/bin/redbean.zip -BJSSvvvVVV -t 3000 -%'
   alias redbean.BJS.v='env -i ~/bin/redbean.zip -BJSv -t 3000 -%'
+  alias redbean.BJ.v='env -i ~/bin/redbean.zip -BJv -t 3000 -%'
   alias redbean.info='zipinfo ~/bin/redbean.zip'
   alias redbean.add='zip ~/bin/redbean.zip'
   alias redbean.add.r='zip -r ~/bin/redbean.zip'
   alias redbean.del='zip -d ~/bin/redbean.zip'
-  alias redbean.add.noc='zip -r -0 ~/bin/redbean.zip'
+  alias redbean.add.noc='zip -0 ~/bin/redbean.zip'
+  alias redbean.add.noc.r='zip -r -0 ~/bin/redbean.zip'
   alias redbean.unpack='unzip -d ./redbean ~/bin/redbean.zip'
 }
 
@@ -54,6 +56,7 @@ function text.row.hl()
   done
 }
 
+
 function todo()
 {
   local TODO=~/.todo.txt
@@ -71,6 +74,7 @@ function todo()
   done
   cat ${TODO}
 }
+
 
 [[ -x /usr/bin/find ]] && {
 
@@ -309,6 +313,7 @@ function env()
   }
   case $- in *i*) proceed $@;; *) /usr/bin/env $@;; esac
 }
+
 
 [[ -x /usr/bin/gcc ]] && {
 
