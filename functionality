@@ -1,4 +1,5 @@
 # system wide userland
+
 ### oneshot
 # This part is gonna vanish from script... if you load it
 #from inside git repo issue ". functionality"
@@ -15,6 +16,18 @@ function reload.functionality()
   [[ -f /etc/functionality ]] && source /etc/functionality
 }
 
+function aliases.redbean()
+{
+  alias redbean.BJS.vvvVVV='env -i ~/bin/redbean.zip -BJSvvvVVV -t 3000 -%'
+  alias redbean.BJSS.vvvVVV='env -i ~/bin/redbean.zip -BJSSvvvVVV -t 3000 -%'
+  alias redbean.BJS.v='env -i ~/bin/redbean.zip -BJSv -t 3000 -%'
+  alias redbean.info='zipinfo ~/bin/redbean.zip'
+  alias redbean.add='zip ~/bin/redbean.zip'
+  alias redbean.add.r='zip -r ~/bin/redbean.zip'
+  alias redbean.del='zip -d ~/bin/redbean.zip'
+  alias redbean.add.noc='zip -r -0 ~/bin/redbean.zip'
+  alias redbean.unpack='unzip -d ./redbean ~/bin/redbean.zip'
+}
 
 # -----------------------------------------------------
 ## text
@@ -278,6 +291,8 @@ function todo()
   alias ss.ssh='ss -o state established "( dport = :ssh or sport = :ssh )"'
   alias ss.tcp='ss -t -a'
   alias ss.udp='ss -u -a'
+  alias ip.link='ip link'
+  alias ip.addr='ip addr'
 }
 
 # ---------------------------------------------------
@@ -295,35 +310,37 @@ function env()
   case $- in *i*) proceed $@;; *) /usr/bin/env $@;; esac
 }
 
+[[ -x /usr/bin/gcc ]] && {
 
-function env.gcc.unset()
-{
-  [[ ${CFLAGS} ]] && unset CFLAGS CPPFLAGS MAKEFLAGS
-  case $- in *i*) echo "CFLAGS CPPFLAGS MAKEFLAGS unset.";; esac
+  function env.gcc.unset()
+  {
+    [[ ${CFLAGS} ]] && unset CFLAGS CPPFLAGS MAKEFLAGS
+    case $- in *i*) echo "CFLAGS CPPFLAGS MAKEFLAGS unset.";; esac
+  }
+  
+  
+  function env.gcc.set()
+  {
+    # optimisation given by -O flag
+    # coding standard given by -std flag
+    # preprocessing error flags
+    # cpu option flags
+    # all of this shall be used on purpose.
+    local march="x86-64"
+    local mtune="native"
+    [[ ${1} ]] && march=${1}
+    [[ ${2} ]] && mtune=${2}
+    CFLAGS="-march=$march -mtune=$mtune -fdiagnostics-color=always -pipe"
+    CPPFLAGS=${CFLAGS}
+    MAKEFLAGS=-j$(($(nproc)+1))
+    export CFLAGS CPPFLAGS MAKEFLAGS
+    case $- in *i*) echo $CFLAGS;; esac
+  }
+
 }
-
-
-function env.gcc.set()
-{
-  # optimisation given by -O flag
-  # coding standard given by -std flag
-  # preprocessing error flags
-  # cpu option flags
-  # all of this shall be used on purpose.
-  local march="x86-64"
-  local mtune="native"
-  [[ ${1} ]] && march=${1}
-  [[ ${2} ]] && mtune=${2}
-  CFLAGS="-march=$march -mtune=$mtune -fdiagnostics-color=always -pipe"
-  CPPFLAGS=${CFLAGS}
-  MAKEFLAGS=-j$(($(nproc)+1))
-  export CFLAGS CPPFLAGS MAKEFLAGS
-  case $- in *i*) echo $CFLAGS;; esac
-}
-
 
 # root access
-if [[ $EUID -eq 0 ]]; then
+[[ $EUID -eq 0 ]] && {
 
   [[ -x /usr/bin/vim ]] && {
     [[ -f /etc/functionality ]] && \
@@ -341,5 +358,5 @@ if [[ $EUID -eq 0 ]]; then
     echo "Hello, world."
   }
 
-fi
+}
 

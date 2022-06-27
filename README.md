@@ -58,7 +58,12 @@ I may end sclicing functionality to part source/unset ofloading style zZZzzzZZ;
 ```text.row.hl <text_file> <optional:color>``` output text file line by line with alternate color.
 colors are red, green, yellow, blue, purple, cyan, gray by default (without provided color)
 
+```todo``` let read your stored todo's.
+
+```todo edit``` let you edit your todo's inside your user directory.
+
 ```todo <title> <message>``` let you store your todo's inside your user directory.
+
 
 #### directory, file, link lookup related
 
