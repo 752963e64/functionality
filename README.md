@@ -83,6 +83,9 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 ```rb.vhost.wp <vhostname> <textyfile>``` let you write and pushes automaticaly ooof.
 
+notice that coding breakage are imported whithin you push request... so write nice code!
+
+
 #### directory, file, link lookup related
 
 ```find.file <path> <name>``` lookup some common named resources.
