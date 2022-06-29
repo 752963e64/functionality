@@ -1,7 +1,7 @@
 # functionality
 Give a sens to your interactive or non interactive shell...
 
-- this script demonstrate metaprog, a clear understanding of system tools & protocols
+- this script demonstrate soft metaprog, a clear understanding of system tools & protocols
 
 ## to be sourced somewhere...
 ##### You are a profane and you just uses it.
