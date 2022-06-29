@@ -81,6 +81,7 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 
 - add many disposable aliases for redbean including function 
 
+```rb.vhost.wp <vhostname> <textyfile>``` let you write and pushes automaticaly ooof.
 
 #### directory, file, link lookup related
 
