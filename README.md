@@ -3,6 +3,8 @@ Give a sens to your interactive or non interactive shell...
 
 - this script demonstrate soft metaprog, a clear understanding of system tools & protocols
 
+- Like professional, Uncommon programming with no if ooff alse den poof moof. authored on fly, alwayz. :)
+
 ## to be sourced somewhere...
 ##### You are a profane and you just uses it.
 - 2 wayz offered.
