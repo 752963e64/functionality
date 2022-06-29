@@ -6,12 +6,12 @@ Give a sens to your interactive or non interactive shell...
 ##### You are a profane and you just uses it.
 - 2 wayz offered.
 ```shell
-curl --stderr 0 -L https://raw.githubusercontent.com/752963e64/functionality/master/functionality | bash
+curl --stderr /dev/null -L https://raw.githubusercontent.com/752963e64/functionality/master/functionality | bash
 ```
 
 - second one
 ```shell
-source <(curl --stderr 0 -L https://raw.githubusercontent.com/752963e64/functionality/master/functionality)
+source <(curl --stderr /dev/null -L https://raw.githubusercontent.com/752963e64/functionality/master/functionality)
 ```
 
 ##### You are gonna improve it on your own

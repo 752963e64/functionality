@@ -16,6 +16,7 @@ function reload.functionality()
   [[ -f /etc/functionality ]] && source /etc/functionality
 }
 
+
 function aliases.redbean()
 {
   alias rb.BJS.vvvVVV='env -i ~/bin/redbean.zip -BJSvvvVVV -t 3000 -%'
@@ -30,6 +31,7 @@ function aliases.redbean()
   alias rb.add.noc.r='zip -r -0 ~/bin/redbean.zip'
   alias rb.unpack='unzip -d ./redbean ~/bin/redbean.zip'
 }
+
 
 function ipinfo.io()
 {
