@@ -1,6 +1,7 @@
 # functionality
 Give a sens to your interactive or non interactive shell...
 
+- this script demonstrate metaprog, a clear understanding of system tools & protocols
 
 ## to be sourced somewhere...
 ##### You are a profane and you just uses it.
@@ -75,6 +76,8 @@ colors are red, green, yellow, blue, purple, cyan, gray by default (without prov
 ```todo edit``` let you edit your todo's inside your user directory.
 
 ```todo <title> <message>``` let you store your todo's inside your user directory.
+
+- add many disposable aliases for redbean including function 
 
 
 #### directory, file, link lookup related
