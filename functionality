@@ -33,8 +33,8 @@ function aliases.redbean()
 
 function ipinfo.io()
 {
-  [[ ${1} ]] || { echo "usage: ipinfo.io <ip> <optional:hostname|anycast|city|region|country|loc|org|timezone>" }
-  [[ ${2} ]] && { curl ipinfo.io/${1}/${2}; return $? }
+  [[ ${1} ]] || { echo "usage: ipinfo.io <ip> <optional:hostname|anycast|city|region|country|loc|org|timezone>"; }
+  [[ ${2} ]] && { curl ipinfo.io/${1}/${2}; return $?; }
   curl ipinfo.io/${1}
   return $?
 }
