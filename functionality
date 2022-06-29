@@ -30,6 +30,22 @@ function aliases.redbean()
   alias rb.add.noc='zip -0 ~/bin/redbean.zip'
   alias rb.add.noc.r='zip -r -0 ~/bin/redbean.zip'
   alias rb.unpack='unzip -d ./redbean ~/bin/redbean.zip'
+
+  function rb.vhost.wp {
+    [[ ${1} && ${2} ]] || { echo "rb.vhost.wp <vhostname> <file>"; return 1; }
+    [[ -d ~/redbean ]] || { echo "you must have a copy in ~/redbean; proceeding for you."; rb.unpack; return 1; }
+    [[ -d ~/redbean/${1} ]] && {
+      [[ -f ~/redbean/${1}/${2} ]] && {
+        [[ /usr/bin/vim ]] && {
+          vim ~/redbean/${1}/${2} && cd ~/redbean/
+          rb.add ${1}/${2}
+          local ret=$?
+          cd $OLDPWD
+          return ${ret}
+        }
+      }
+    }
+  }
 }
 
 
