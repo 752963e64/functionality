@@ -21,33 +21,37 @@ function aliases.redbean()
 {
   case $- in *i*) echo "Yay red lobsters! You must own a redbean.zip
 into ~/bin; Please proceed if you don't.";; *) esac
-  alias rb.BJS.vvvVVV='env -i ~/bin/redbean.zip -BJSvvvVVV -t 3000 -%'
-  alias rb.BJSS.vvvVVV='env -i ~/bin/redbean.zip -BJSSvvvVVV -t 3000 -%'
-  alias rb.BJS.v='env -i ~/bin/redbean.zip -BJSv -t 3000 -%'
-  alias rb.BJ.v='env -i ~/bin/redbean.zip -BJv -t 3000 -%'
-  alias rb.info='zipinfo ~/bin/redbean.zip'
-  alias rb.add='zip ~/bin/redbean.zip'
-  alias rb.add.r='zip -r ~/bin/redbean.zip'
-  alias rb.del='zip -d ~/bin/redbean.zip'
-  alias rb.add.noc='zip -0 ~/bin/redbean.zip'
-  alias rb.add.noc.r='zip -r -0 ~/bin/redbean.zip'
-  alias rb.unpack='unzip -d ./redbean ~/bin/redbean.zip'
+  [[ -f ~/bin/redbean.zip ]] {
+    alias rb.BJS.vvvVVV='env -i ~/bin/redbean.zip -BJSvvvVVV -t 3000 -%'
+    alias rb.BJSS.vvvVVV='env -i ~/bin/redbean.zip -BJSSvvvVVV -t 3000 -%'
+    alias rb.BJS.v='env -i ~/bin/redbean.zip -BJSv -t 3000 -%'
+    alias rb.BJ.v='env -i ~/bin/redbean.zip -BJv -t 3000 -%'
+    alias rb.info='zipinfo ~/bin/redbean.zip'
+    alias rb.add='zip ~/bin/redbean.zip'
+    alias rb.add.r='zip -r ~/bin/redbean.zip'
+    alias rb.del='zip -d ~/bin/redbean.zip'
+    alias rb.add.noc='zip -0 ~/bin/redbean.zip'
+    alias rb.add.noc.r='zip -r -0 ~/bin/redbean.zip'
+    alias rb.unpack='unzip -d ./redbean ~/bin/redbean.zip'
 
-  function rb.vhost.wp {
-    [[ ${1} && ${2} ]] || { echo "rb.vhost.wp <vhostname> <file>"; return 1; }
-    [[ -d ~/redbean ]] || { echo "you must have a copy in ~/redbean; proceeding for you."; rb.unpack; return 1; }
-    [[ -d ~/redbean/${1} ]] && {
-      [[ -f ~/redbean/${1}/${2} ]] && {
-        [[ /usr/bin/vim ]] && {
-          vim ~/redbean/${1}/${2} && cd ~/redbean/
-          rb.add ${1}/${2}
-          local ret=$?
-          cd $OLDPWD
-          return ${ret}
+    function rb.vhost.wp {
+      [[ ${1} && ${2} ]] || { echo "rb.vhost.wp <vhostname> <file>"; return 1; }
+      [[ -d ~/redbean ]] || { echo "you must have a copy in ~/redbean; proceeding for you."; rb.unpack; return 1; }
+      [[ -d ~/redbean/${1} ]] && {
+        [[ -f ~/redbean/${1}/${2} ]] && {
+          [[ /usr/bin/vim ]] && {
+            vim ~/redbean/${1}/${2} && cd ~/redbean/
+            rb.add ${1}/${2}
+            local ret=$?
+            cd $OLDPWD
+            return ${ret}
+          }
         }
       }
     }
   }
+  [[ -f ~/bin/redbean.zip ]] && { echo "I'm clever enouf to tell you that
+  you don't own a ~/bin/redbean.zip; Try again."; return 1; }
 }
 
 
