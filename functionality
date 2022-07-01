@@ -65,8 +65,10 @@ function ipinfo.io()
 
 function host.io()
 {
-  [[ ${1} ]] || { echo "usage: host.io <hostanme|domainname>"; }
-  curl host.io/${1}
+  [[ ${1} ]] || { echo "usage: subscribe to host.io first grab token on dashboard,
+  replace YOUR_TOKEN_HERE in functionality's host.io url and then everything should be okay.
+  host.io <hostanme|domainname>"; }
+  curl host.io/api/full/${1}?token=YOUR_TOKEN_HERE
   return $?
 }
 
