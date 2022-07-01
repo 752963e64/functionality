@@ -63,6 +63,12 @@ function ipinfo.io()
   return $?
 }
 
+function host.io()
+{
+  [[ ${1} ]] || { echo "usage: host.io <hostanme|domainname>"; }
+  curl host.io/${1}
+  return $?
+}
 
 # -----------------------------------------------------
 ## text
