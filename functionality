@@ -421,7 +421,7 @@ function env()
   function close.net()
   {
     # open to a particular host :)
-    ip route add "<\RHOST_IP/>" via 62.210.114.1
+    ip route add "<\RHOST_IP/>" via "<\GATEWAY/>"
     # forget the whole internet :D
     ip route del default
     ip route
