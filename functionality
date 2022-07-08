@@ -388,6 +388,8 @@ function env()
 # root access
 [[ $EUID -eq 0 ]] && {
 
+  alias blackhole='ip route add blackhole'
+
   [[ -x /usr/bin/vim ]] && {
     [[ -f /etc/functionality ]] && \
       alias config.functionality="vim /etc/functionality"
