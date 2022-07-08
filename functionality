@@ -390,6 +390,43 @@ function env()
 
   alias blackhole='ip route add blackhole'
 
+  function lo.up()
+  {
+    [[ -e /sbin/ifconfig ]] && { ifconfig lo up; return }
+    [[ -e /sbin/ip ]] && { ip address add 127.0.0.1/8 dev lo }
+  } # -----------------------------------
+
+  function lo.down()
+  {
+    [[ -e /sbin/ifconfig ]] && { ifconfig lo down; return }
+    [[ -e /sbin/ip ]] && { ip address del 127.0.0.1/8 dev lo }
+  } # -----------------------------------
+
+  function route.to()
+  {
+    [[ ${1} ]] && [[ ${2} ]] && {
+      local rhost=${1}
+      local gateway=${2}
+      ip route add ${rhost} via ${gateway}
+    }
+  } # -----------------------------------
+
+  function open.net()
+  {
+    ip route add default via "<\GATEWAY/>"
+    ip route del "<\RHOST_IP/>"
+    ip route
+  } # -----------------------------------
+ 
+  function close.net()
+  {
+    # open to a particular host :)
+    ip route add "<\RHOST_IP/>" via 62.210.114.1
+    # forget the whole internet :D
+    ip route del default
+    ip route
+  } # -----------------------------------
+
   [[ -x /usr/bin/vim ]] && {
     [[ -f /etc/functionality ]] && \
       alias config.functionality="vim /etc/functionality"
