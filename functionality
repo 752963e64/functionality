@@ -21,7 +21,7 @@ function aliases.redbean()
 {
   case $- in *i*) echo "Yay red lobsters! You must own a redbean.zip
 into ~/bin; Please proceed if you don't.";; *) esac
-  [[ -f ~/bin/redbean.zip ]] {
+  [[ -f ~/bin/redbean.zip ]] && {
     alias rb.BJS.vvvVVV='env -i ~/bin/redbean.zip -BJSvvvVVV -t 3000 -%'
     alias rb.BJSS.vvvVVV='env -i ~/bin/redbean.zip -BJSSvvvVVV -t 3000 -%'
     alias rb.BJS.v='env -i ~/bin/redbean.zip -BJSv -t 3000 -%'
@@ -392,14 +392,14 @@ function env()
 
   function lo.up()
   {
-    [[ -e /sbin/ifconfig ]] && { ifconfig lo up; return }
-    [[ -e /sbin/ip ]] && { ip address add 127.0.0.1/8 dev lo }
+    [[ -e /sbin/ifconfig ]] && { ifconfig lo up; return; }
+    [[ -e /sbin/ip ]] && { ip address add 127.0.0.1/8 dev lo; }
   } # -----------------------------------
 
   function lo.down()
   {
-    [[ -e /sbin/ifconfig ]] && { ifconfig lo down; return }
-    [[ -e /sbin/ip ]] && { ip address del 127.0.0.1/8 dev lo }
+    [[ -e /sbin/ifconfig ]] && { ifconfig lo down; return; }
+    [[ -e /sbin/ip ]] && { ip address del 127.0.0.1/8 dev lo; }
   } # -----------------------------------
 
   function route.to()
